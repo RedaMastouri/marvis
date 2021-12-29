@@ -1,8 +1,7 @@
 ## Marvis v1.0
+Marvis is Mastouri's Jarvis version of the AI-powered Python personal assistant.
 
 <a href="https://redamastouri.com/" target="_blank" rel="noreferrer"><img alt="portfolio" style="text-align: center;" src="img/marvis.png" /></a>
-
-Marvis is Mastouri's Jarvis version of the AI-powered Python personal assistant.
 
 ## About M.A.R.V.I.S.
 
