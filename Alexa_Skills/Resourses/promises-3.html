@@ -1,0 +1,29 @@
+<html>
+
+<body>
+<script>
+
+var d = new Date();
+var n = 3000 + d.getTime(); // Add 3 seconds to current date
+var counter = 1;
+
+function a() {
+setTimeout(function () {
+console.log("Function A completes in " + (new Date() - d) + "ms / " + new Date());
+counter = 2;
+}, 3000);
+}
+
+function b() {
+console.log("Function B completes. Counter Value: " + counter + " / " + new Date());
+}
+
+console.log("Starts at " + d);
+
+a();
+b();
+</script>
+
+</body>
+
+</html>
