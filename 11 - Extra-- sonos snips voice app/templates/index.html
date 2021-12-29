@@ -1,0 +1,158 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <a href="/"><svg viewBox="0 0 54 25" id="logo"><path d="M8.878 8.375l-1.125 1.03a.617.617 0 0 1-.83.012c-.572-.523-1.27-.77-1.882-.77-.643 0-1.233.374-1.233 1.124 0 .59.483 1.018 1.288 1.313 1.852.67 4.886 1.257 4.886 4.148 0 2.437-1.878 4.5-4.805 4.5-2.5 0-4.263-1.563-5.097-3.074a.615.615 0 0 1 .246-.843l1.553-.83c.3-.16.678-.053.834.248.52 1.004 1.348 1.66 2.465 1.66 1.02 0 1.665-.454 1.665-1.444 0-1.124-1.745-1.366-3.382-2.06C1.98 12.768.72 11.83.72 9.743S2.41 5.81 5.04 5.81c1.6 0 3.015.678 3.9 1.728a.607.607 0 0 1-.062.837m5.387-1.133a.604.604 0 0 0 .66-.12c.788-.783 2.383-1.313 3.94-1.313 2.143 0 4.16 1.364 4.16 4.068V18.9c0 .34-.274.615-.614.615h-2.097a.614.614 0 0 1-.615-.614V10.87c0-1.606-.805-2.222-1.933-2.222-1.786 0-3.087.953-3.087 4.513v5.74c0 .34-.275.615-.615.615h-2.098a.614.614 0 0 1-.615-.614V6.946c0-.438.447-.735.853-.565l2.062.862zm13.537 12.272h-2.1a.614.614 0 0 1-.614-.613V6.637c0-.34.276-.613.615-.613h2.1c.338 0 .614.274.614.613V18.9c0 .34-.276.614-.615.614M26.752 0C27.988 0 28.9.937 28.9 2.14c0 1.206-.912 2.143-2.148 2.143-1.234 0-2.147-.937-2.147-2.142 0-1.203.913-2.14 2.147-2.14m9.981 8.645c-1.745 0-3.114 1.446-3.114 4.123 0 2.676 1.368 4.12 3.113 4.12 1.744 0 3.14-1.444 3.14-4.12 0-2.678-1.396-4.124-3.14-4.124m.456 11.083c-.86 0-1.696-.275-2.346-.663a.614.614 0 0 0-.93.526v4.77a.613.613 0 0 1-.615.612h-2.1a.613.613 0 0 1-.614-.613V6.945c0-.438.447-.735.852-.565l2.025.846c.248.104.53.03.71-.17.54-.615 1.63-1.247 3.016-1.247 4.08 0 6.173 2.81 6.173 6.96 0 4.148-2.094 6.96-6.174 6.96M52.78 8.375l-1.124 1.03a.617.617 0 0 1-.83.012c-.572-.523-1.27-.77-1.882-.77-.644 0-1.235.374-1.235 1.124 0 .59.482 1.018 1.288 1.313 1.852.67 4.885 1.257 4.885 4.148 0 2.437-1.88 4.5-4.805 4.5-2.502 0-4.264-1.563-5.097-3.074a.617.617 0 0 1 .246-.843l1.554-.83c.3-.16.678-.053.833.248.52 1.004 1.347 1.66 2.465 1.66 1.02 0 1.664-.454 1.664-1.444 0-1.124-1.744-1.366-3.382-2.06-1.476-.617-2.738-1.554-2.738-3.642s1.692-3.935 4.322-3.935c1.6 0 3.014.678 3.9 1.728a.608.608 0 0 1-.064.837"></path></svg></a>
+        <div class="left_menu">
+            <a href="/devices/">Devices</a>
+            <a>Injection</a>
+        </div>
+    </nav>
+    <div class="container">
+
+        <!-- Flashing messages -->
+        {% if configuration_file_errors|length > 0 %}
+        <div class="flash content">
+            <h3>⚠️ Warning</h3>
+            <h5>Some error(s) occured with your configuration file, please correct them :</h5>
+            <ul>
+                {% for error in configuration_file_errors %}
+                    <li>{{error}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% if device_discovery_errors|length > 0 %}
+        <div class="flash content">
+            <h3>⚠️ Warning</h3>
+            <h5>Some error(s) occured with the device discovery service:</h5>
+            <ul>
+                {% for error in device_discovery_errors %}
+                    <li>{{error}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <!-- End of flashing message -->
+
+        <div class="content">
+            <!-- CONTENT GOES HERE -->
+
+            <h1>Jukebox</h1>
+            <br>
+            👋 You are using the jukebox project at version : <span class="inline_code">2.0.0</span>.<br>
+            📻 The Sonos devices that are detected are :  {% if devices %}{% for device in devices %}<span class="inline_code">{{device.name}}<i>#{{device.identifier}}</i></span>{% endfor %} {% else %}<i>No connected devices</i>{% endif %}<br>
+            ⚡️ You are streaming music from : <span class="inline_code">{{music_provider}}</span>.<br>
+            <br>
+            <h1>Setup Instructions</h1>
+            <p>Instructions for :
+            <select id="music_provider_select">
+              <option value="deezer">Deezer</option>
+              <option value="spotify">Spotify</option>
+            </select>
+            </p>
+            <div id="no_instructions">
+                <p>Please, select a Music Provider here 👆</p>
+            </div>
+
+            <div id="deezer_instructions" class="gone">
+            <h3>Creating a configuration file</h3>
+            <i>[On your Raspberry Pi]</i>
+            <ul>
+                <li>Create a configuration file <b>config.ini</b> at the root of the <span class="inline_code">snips-app-sonos</span> folder</li>
+                <li>Make sure the configuration file has the following fields, in the <b>global</b> section</li>
+                <pre>hostname={{hostname}}</pre>
+            </ul>
+                <h3>Linking your Deezer Account</h3>
+                <i>[On your computer]</i>
+                <ul>
+                    <li>Head over to your <a target="_blank" href="https://developers.deezer.com/">Deezer Developper Dashboard</a> in your web browser</li>
+                    <li>Create an application and give it a name.
+                    <li>In the <i>Redirect URI</i> field, fill in this <b>EXACT</b> following value : </li>
+                    <pre>http://{{hostname}}:5000/deezer_callback/</pre>
+                </ul>
+                <i>[On your Raspberry Pi]</i>
+                <ul>
+                    <li>Make sure the configuration file has the following fields, in the <b>secret section</b></li>
+                    <pre>client_id=&ltyour client id&gt</pre>
+                    <pre>client_secret=&ltyour client secret&gt</pre>
+                    <pre>redirect_uri=&ltyour redirect URI&gt</pre>
+		    <li>Restart the web server (sudo systemctl restart snips-skill-server.service or sudo systemctl restart snips-sonos-web.service)</li>
+                </ul>
+                <i>[On your Computer]</i>
+                <ul>
+                    <li>Link your Spotify account by clicking here : <a class="btn" href="https://connect.deezer.com/oauth/auth.php?app_id={{client_id}}&redirect_uri={{redirect_uri|urlencode}}&perms=basic_access,offline_access">Connect Deezer Account</a></li>
+                    <li>Once you entered the credentials, restart the skill server</li>
+                </ul>
+                <br>
+                <b>You should be all set 😎 !</b>
+                <br>
+            </div>
+
+            <div id="spotify_instructions" class="gone">
+                <h3>Creating a configuration file</h3>
+                <i>[On your Raspberry Pi]</i>
+                <ul>
+                    <li>Create a configuration file <b>config.ini</b> at the root of the <span class="inline_code">snips-app-sonos</span> folder</li>
+                    <li>Make sure the configuration file has the following fields, in the <b>global</b> section</li>
+                    <pre>hostname={{hostname}}</pre>
+                </ul>
+
+                <h3>Linking your Spotify Account</h3>
+                <i>[On your computer]</i>
+                <ul>
+                    <li>Head over to your <a target="_blank" href="https://developer.spotify.com/dashboard/applications">Spotify Developper Dashboard</a> in your web browser</li>
+                    <li>Create an application and give it a name. Make sure to tick the <i>"I don't know"</i> option when asked what you are building.</li>
+                    <li>In the <i>Edit settings</i> section, add a <i>Redirect URIs</i> with the <b>EXACT</b> following value : </li>
+                    <pre>http://{{hostname}}:5000/callback/</pre>
+                </ul>
+                <i>[On your Raspberry Pi]</i>
+                <ul>
+                    <li>Make sure the configuration file has the following fields, in the <b>secret section</b></li>
+                    <pre>client_id=&ltyour client id&gt</pre>
+                    <pre>client_secret=&ltyour client secret&gt</pre>
+                    <pre>redirect_uri=&ltyour redirect URI&gt</pre>
+                </ul>	
+		<li>Restart the web server (sudo systemctl restart snips-skill-server.service or sudo systemctl restart snips-sonos-web.service)</li>
+                <i>[On your Computer]</i>
+                <ul>
+                    <li>Link your Spotify account by clicking here : <a class="btn" href="https://accounts.spotify.com/authorize/?client_id={{client_id}}&response_type=code&scope=user-read-private%20user-top-read%20user-library-read%20playlist-read-private&redirect_uri={{redirect_uri|urlencode}}">Connect Spotify Account</a></li>
+                    <li>Once you entered the credentials, restart the skill server</li>
+                </ul>
+                <br>
+                <b>You should be all set 😎 !</b>
+                <br>
+
+            </div>
+            <!-- CONTENT ENDS HERE -->
+
+        </div>
+    </div>
+    <p style="text-align:center">Made by <a href="https://snips.ai/">Snips</a></p>
+    <p style="text-align:center"><i class="fab fa-github"></i><a href="https://github.com/snipsco/snips-app-sonos"> Source code </a></p>
+    </body>
+    <script>
+        document.getElementById("music_provider_select").onchange = function(value){
+            var selected_value = value.target.value;
+
+            var deezer_instructions_container = document.getElementById("deezer_instructions")
+            var spotify_instructions_container = document.getElementById("spotify_instructions")
+            var no_instructions_container = document.getElementById("no_instructions")
+
+
+            if (selected_value == "spotify") {
+                no_instructions_container.classList.add("gone")
+                spotify_instructions_container.classList.remove("gone")
+                deezer_instructions_container.classList.add("gone")
+            }
+            if (selected_value == "deezer") {
+                no_instructions_container.classList.add("gone")
+                spotify_instructions_container.classList.add("gone")
+                deezer_instructions_container.classList.remove("gone")
+            }
+        }
+    </script>
+</html>

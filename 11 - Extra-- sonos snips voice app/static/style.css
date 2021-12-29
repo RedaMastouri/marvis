@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+
+body {
+  font-family: "Nunito", "Helvetica", "Arial", sans-serif;
+}
+
+body {
+  background-color : #f2f2f2;
+  color: #555;
+  line-height: 1.5;
+  width:100%;
+}
+
+
+h1,
+h2,
+strong {
+  color: #333;
+}
+
+code,
+pre {
+  background: #eee;
+}
+
+code {
+  padding: 2px 4px;
+  vertical-align: text-bottom;
+  border-bottom: 1px solid #d8dee9;
+  color: #a7adba;
+}
+
+pre {
+  padding: 10px;
+  border-left: 2px solid #69c;
+}
+
+.gone {
+    display: none;
+}
+.hidden {
+    visibility: hidden;
+}
+
+.inline_code {
+    color: #96281B;
+    font-family: Courier;
+    background-color: #ECF0F1;
+}
+
+.container {
+    border-radius: 4px;
+    background-color: white;
+    width : 80%;
+    margin: 50 auto;
+}
+
+.content {
+    padding-top : 50px;
+    padding-left : 5em;
+    padding-right : 5em;
+    padding-bottom : 50px;
+}
+
+.flash {
+    background-color:#65C6BB;
+    color: white;
+}
+
+nav {
+    color: #ccc;
+    text-transform: uppercase;
+    font-size:0.8em;
+    padding-left : 3em;
+    padding-right : 3em;
+    padding-top : 0.3em;
+}
+
+nav svg {
+    display: inline;
+    width: 55px;
+    height: 25px;
+    fill : blue;
+}
+
+nav .left_menu {
+    float: right;
+}
+
+nav .left_menu a {
+    margin-right: 1em;
+}
+
+
+.deck {
+    text-align: center;
+}
+
+.card {
+    position: relative;
+    width : 300px;
+    height: 150px;
+    border: 1px solid #f2f2f2;
+    text-align : center;
+    display: inline-block;
+    padding: 20px;
+
+}
+
+.card.active{
+    border-color:#69c;;
+}
+
+.card img {
+    width : 100px;
+    height: 100px;
+}
+
+.card i {
+    position: absolute;
+    bottom: 0;
+    right:0;
+}

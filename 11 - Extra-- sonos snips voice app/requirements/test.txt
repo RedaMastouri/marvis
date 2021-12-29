@@ -1,0 +1,6 @@
+-r prod.txt
+mock
+pytest
+coverage
+pytest-cov
+tox

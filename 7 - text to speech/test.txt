@@ -1,0 +1,26 @@
+If you do not support macOS then you can stop reading.
+
+What is happening?
+Midway authentication was added to the Jamf admin console for Mac management. 
+https://casperadmin.aka.amazon.com:8443
+
+Why is this happening?
+To satisfy a security requirement.
+
+How does this affect me?
+Midway authentication will be required before accessing the console if the web browser does not already have an active Midway session. 
+
+Things to note:
+There is no change in who is able to access the Jamf console. 
+This does not affect the enrollment portal or Self Service.
+This does not replace the Jamf admin console authentication. It is only a gate in front of it. You will still need to log into the Jamf console with your -admin account.
+
+If you experience a problem with the Midway portal in front of the Jamf admin console, please make a comment on this SIM: https://sim.amazon.com/issues/P25771394
+
+If you are already authenticated to Midway in your browser, you can test the link in a private/incognito window.
+
+Thanks,
+ 
+Luke Andrews
+Systems Engineer | macOS SME | Client Engineering
+lukean@amazon.com

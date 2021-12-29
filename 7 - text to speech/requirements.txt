@@ -1,0 +1,2 @@
+gtts-2.1.1 
+gtts-token-1.1.3

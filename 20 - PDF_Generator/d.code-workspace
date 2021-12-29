@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "billy",
+			"path": "C:\\formation-angular-7\\AFE dashboard project\\AJAXandJSON\\billy"
+		},
+		{
+			"name": "SSH FS - rmastour",
+			"uri": "ssh://rmastour/"
+		}
+	],
+	"settings": {}
+}
