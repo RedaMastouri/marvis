@@ -1,0 +1,14 @@
+# IDE + Environment
+.idea/
+venv/
+output/
+__pycache__/
+
+# Build
+.pyc
+build/
+dist/
+*.egg-info/
+
+# pytest
+.pytest_cache
